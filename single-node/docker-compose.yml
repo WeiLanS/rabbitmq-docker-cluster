@@ -1,0 +1,19 @@
+version: '3'
+
+services:
+  
+  rabbitmq:
+    image: rabbitmq:3-management
+    hostname: rabbitmq1
+    environment:
+    #  持久化日志，RabbitMQ官方镜像只会在console中打印
+    #  - RABBITMQ_LOGS=/var/log/rabbitmq/rabbit.log 
+    volumes:
+      - ./rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+    ports:
+      - "15672:15672"
+      - "5672:5672"
+      - "25672:25672"
+      - "35197:35197"
+      - "4369:4369" 
+
